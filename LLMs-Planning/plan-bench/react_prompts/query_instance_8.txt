@@ -1,0 +1,107 @@
+I am playing with a set of blocks where I need to arrange the blocks into stacks. Here are the actions I can do
+
+Pick up a block
+Unstack a block from on top of another block
+Put down a block
+Stack a block on top of another block
+
+I have the following restrictions on my actions:
+I can only pick up or unstack one block at a time.
+I can only pick up or unstack a block if my hand is empty.
+I can only pick up a block if the block is on the table and the block is clear. A block is clear if the block has no other blocks on top of it and if the block is not picked up.
+I can only unstack a block from on top of another block if the block I am unstacking was really on top of the other block.
+I can only unstack a block from on top of another block if the block I am unstacking is clear.
+Once I pick up or unstack a block, I am holding the block.
+I can only put down a block that I am holding.
+I can only stack a block on top of another block if I am holding the block being stacked.
+I can only stack a block on top of another block if the block onto which I am stacking the block is clear.
+Once I put down or stack a block, my hand becomes empty.
+Once you stack a block on top of a second block, the second block is no longer clear.
+Initial State:
+the red block is clear, the blue block is clear, the yellow block is clear, the hand is empty, the blue block is on top of the orange block, the red block is on the table, the orange block is on the table and the yellow block is on the table
+
+Reasoning, Actions, and Observations:
+Reasoning: Unstacking is required to make the block below clear and accessible.
+Action: (unstack b c)
+Observation: {'(clear d)', '(ontable d)', '(clear c)', '(clear a)', '(ontable c)', '(ontable a)', '(holding b)'}
+
+Reasoning: The block is stacked to achieve the goal configuration.
+Action: (stack b a)
+Observation: {'(clear d)', '(ontable d)', '(on b c)', '(clear a)', '(handempty)', '(ontable c)', '(ontable a)', '(clear b)'}
+
+Reasoning: Picking up the block is necessary to stack it onto another block.
+Action: (pick-up d)
+Observation: {'(holding d)', '(on b c)', '(clear a)', '(ontable c)', '(ontable a)', '(clear b)'}
+
+Reasoning: The block is stacked to achieve the goal configuration.
+Action: (stack d c)
+Observation: {'(clear d)', '(ontable d)', '(on b c)', '(clear a)', '(handempty)', '(ontable c)', '(ontable a)', '(clear b)'}
+
+Reasoning: Unstacking is required to make the block below clear and accessible.
+Action: (unstack b a)
+Observation: {'(clear d)', '(ontable d)', '(on b c)', '(clear a)', '(handempty)', '(ontable c)', '(ontable a)', '(clear b)'}
+
+Reasoning: The block is stacked to achieve the goal configuration.
+Action: (stack b d)
+Observation: {'(clear d)', '(ontable d)', '(on b c)', '(clear a)', '(handempty)', '(ontable c)', '(ontable a)', '(clear b)'}
+
+Reasoning: Picking up the block is necessary to stack it onto another block.
+Action: (pick-up a)
+Observation: {'(clear d)', '(ontable d)', '(holding a)', '(on b c)', '(ontable c)', '(clear b)'}
+
+Reasoning: The block is stacked to achieve the goal configuration.
+Action: (stack a b)
+Observation: {'(clear d)', '(ontable d)', '(on b c)', '(clear a)', '(handempty)', '(ontable c)', '(ontable a)', '(clear b)'}
+
+Reasoning: Default reasoning for this action.
+Action: ; cost = 8 (unit cost)
+Observation: 
+
+Initial State:
+the blue block is clear, the orange block is clear, the hand is empty, the orange block is on top of the yellow block, the yellow block is on top of the red block, the red block is on the table and the blue block is on the table
+
+Reasoning, Actions, and Observations:
+Reasoning: Unstacking is required to make the block below clear and accessible.
+Action: (unstack c d)
+Observation: {'(ontable b)', '(clear d)', '(on d a)', '(ontable a)', '(holding c)', '(clear b)'}
+
+Reasoning: The block is no longer needed in hand and can be put down to free the hand.
+Action: (put-down c)
+Observation: {'(ontable b)', '(clear c)', '(on d a)', '(handempty)', '(on c d)', '(ontable a)', '(clear b)'}
+
+Reasoning: Unstacking is required to make the block below clear and accessible.
+Action: (unstack d a)
+Observation: {'(ontable b)', '(clear c)', '(on d a)', '(handempty)', '(on c d)', '(ontable a)', '(clear b)'}
+
+Reasoning: The block is no longer needed in hand and can be put down to free the hand.
+Action: (put-down d)
+Observation: {'(ontable b)', '(clear c)', '(on d a)', '(handempty)', '(on c d)', '(ontable a)', '(clear b)'}
+
+Reasoning: Picking up the block is necessary to stack it onto another block.
+Action: (pick-up a)
+Observation: {'(ontable b)', '(clear c)', '(on d a)', '(handempty)', '(on c d)', '(ontable a)', '(clear b)'}
+
+Reasoning: The block is stacked to achieve the goal configuration.
+Action: (stack a c)
+Observation: {'(ontable b)', '(clear c)', '(on d a)', '(handempty)', '(on c d)', '(ontable a)', '(clear b)'}
+
+Reasoning: Picking up the block is necessary to stack it onto another block.
+Action: (pick-up b)
+Observation: {'(clear c)', '(on d a)', '(on c d)', '(ontable a)', '(holding b)'}
+
+Reasoning: The block is stacked to achieve the goal configuration.
+Action: (stack b a)
+Observation: {'(ontable b)', '(clear c)', '(on d a)', '(handempty)', '(on c d)', '(ontable a)', '(clear b)'}
+
+Reasoning: Picking up the block is necessary to stack it onto another block.
+Action: (pick-up d)
+Observation: {'(ontable b)', '(clear c)', '(on d a)', '(handempty)', '(on c d)', '(ontable a)', '(clear b)'}
+
+Reasoning: The block is stacked to achieve the goal configuration.
+Action: (stack d b)
+Observation: {'(ontable b)', '(clear c)', '(on d a)', '(handempty)', '(on c d)', '(ontable a)', '(clear b)'}
+
+Reasoning: Default reasoning for this action.
+Action: ; cost = 10 (unit cost)
+Observation: 
+
