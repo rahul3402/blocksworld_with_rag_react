@@ -1,5 +1,5 @@
 # blocksworld_rag_react
-tl:dr: Added ReAct and RAG + ReAct for plan generations with LLMs on the Blocksworld environment
+tl:dr Added ReAct and RAG + ReAct for plan generations with LLMs on the Blocksworld environment
 
 I added "t1_react" and "t1_rag_react" tasks to the existing Blocksworld repo. These tasks allowed for planning within the Blocksworld environment leveraging ReAct and ReAct combined with RAG.
 
